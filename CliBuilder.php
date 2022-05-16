@@ -1,20 +1,26 @@
 <?php
 
+/*
+ * This file is part of the PHPFlasher package.
+ * (c) Younes KHOUBZA <younes.khoubza@gmail.com>
+ */
+
 namespace Flasher\Cli\Prime;
 
 use Flasher\Prime\Notification\NotificationBuilder;
 
-final class CliNotificationBuilder extends NotificationBuilder
+final class CliBuilder extends NotificationBuilder
 {
     /**
      * @param string $title
      *
-     * @return self
+     * @return static
      */
     public function title($title)
     {
+        /** @var Notification $notification */
         $notification = $this->envelope->getNotification();
-        $notification->setTitle(addslashes($title));
+        $notification->setTitle($title);
 
         return $this;
     }
@@ -22,10 +28,11 @@ final class CliNotificationBuilder extends NotificationBuilder
     /**
      * @param string $icon
      *
-     * @return self
+     * @return static
      */
     public function icon($icon)
     {
+        /** @var Notification $notification */
         $notification = $this->envelope->getNotification();
         $notification->setIcon($icon);
 
